@@ -18,11 +18,19 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
+                
                 <h1 class="display-4 text-center mb-3">
                     Weight Converter
                 </h1>
+
                 <form>
                     <div class="form-group">
+
+                        <select  class="form-control form-control-lg mb-3" id="dropdown" name="pounds" >
+                                <option id="pounds" value="pound">Pounds to Grams/KG/Ounces</option>
+                                <option id="grams" value="gram">Grams to KG/Ounces/Pounds</option>
+                        </select>
+
                         <input 
                         id="lbsInput"
                         type="number"
@@ -30,42 +38,82 @@
                         placeholder="Enter Pounds...">
                     </div>
                 </form>
-                <div id="output">
-
-                    <div class="card text-white bg-primary mb-2">
-                        <div class="card-header">
-                            <h4>Grams:</h4>
-                            <div id="gramsOutput"></div>
+                    <!-- pound to others -->
+                    <div id="output">
+                        
+                        <div class="card text-white bg-primary mb-2">
+                            <div class="card-header">
+                                <h4>Grams:</h4>
+                                <div id="gramsOutput"></div>
+                            </div>
                         </div>
+                        
+                        <div class="card text-white bg-success mb-2">
+                            <div class="card-header">
+                                <h4>Kilograms:</h4>
+                                <div id="kgOutput"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="card text-white bg-info mb-2">
+                            <div class="card-header">
+                                <h4>Ounces:</h4>
+                                <div id="ozOutput"></div>
+                            </div>
+                        </div>
+                        
                     </div>
                     
-                    <div class="card text-white bg-success mb-2">
-                        <div class="card-header">
-                            <h4>Kilograms:</h4>
-                            <div id="kgOutput"></div>
-                        </div>
-                    </div>
+                    <!-- grams to others -->
 
-                    <div class="card text-white bg-info mb-2">
-                        <div class="card-header">
-                            <h4>Ounces:</h4>
-                            <div id="ozOutput"></div>
+                    <div id="output2">
+                        
+                        <div class="card text-white bg-primary mb-2">
+                            <div class="card-header">
+                                <h4>Pounds:</h4>
+                                <div id="poundOutput"></div>
+                            </div>
                         </div>
+                        
+                        <div class="card text-white bg-success mb-2">
+                            <div class="card-header">
+                                <h4>Kilograms:</h4>
+                                <div id="kgOutput2"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="card text-white bg-info mb-2">
+                            <div class="card-header">
+                                <h4>Ounces:</h4>
+                                <div id="ozOutput2"></div>
+                            </div>
+                        </div>
+                        
                     </div>
-
-                </div>
             </div>
         </div>
     </div>
 <script>
-    document.getElementById('output').style.visibility = 'hidden';
-    document.getElementById('lbsInput').addEventListener('input', function(e){
+        // pound to other
+        document.getElementById('output').style.visibility = 'hidden';
+        document.getElementById('lbsInput').addEventListener('input', function(e){
         document.getElementById('output').style.visibility = 'visible';
         let lbs = e.target.value;
-        document.getElementById('gramsOutput').innerHTML = lbs/0.0022046;
-        document.getElementById('kgOutput').innerHTML = lbs/2.2046;
+        document.getElementById('gramsOutput').innerHTML = (lbs/0.0022046).toFixed(2);
+        document.getElementById('kgOutput').innerHTML = (lbs/2.2046).toFixed(2);
         document.getElementById('ozOutput').innerHTML = lbs*16;
-    });
+        });
+        // grams to other
+        document.getElementById('output2').style.visibility = 'hidden';
+        document.getElementById('lbsInput').addEventListener('input', function(e){
+        document.getElementById('output2').style.visibility = 'visible';
+        let lbs = e.target.value;
+        document.getElementById('poundOutput').innerHTML = (lbs*0.0022046).toFixed(2);
+        document.getElementById('kgOutput2').innerHTML = (lbs/2.2046).toFixed(2);
+        document.getElementById('ozOutput2').innerHTML = lbs*16;
+        });
+
+  
 </script>
 </body>
 </html>
