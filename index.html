@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weight-converter</title>
     <link rel="stylesheet" href="bootstrap.css" />
 
     <style>
@@ -13,75 +14,53 @@
         color: #fff;
       }
     </style>
-    <title>Weight-converter</title>
   </head>
   <body>
     <div class="container">
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <h1 class="display-4 text-center mb-3">Weight Converter</h1>
-          <form>
-            <div class="form-group mb-2">
-              <select
-                id="selectedValue"
-                class="form-select mb-2"
-                aria-label="Default select example"
-              >
-                <option selected>Open this select menu</option>
-                <option value="1">Pound to Gram / KG / Ounces</option>
-                <option value="2">Meter to KM / Mile</option>
-                <option value="3">Three</option>
-              </select>
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-6 text-center">
+          <h1 class="text-center display-4">
+            Weight Converter <i class="fas fa-exchange-alt"></i>
+          </h1>
 
-              <input
-                id="lbsInput"
-                type="number"
-                class="form-control form-control-lg"
-                placeholder="Enter Pounds..."
-              />
-            </div>
-          </form>
+          <select
+            id="select"
+            class="form-select form-select-lg mb-3"
+            aria-label="Default select example"
+          >
+            <option selected>Select base unit</option>
+            <option id="pounds" value="lbKg">Pounds to Kilograms</option>
+            <option id="kilograms" value="kgLb">Kilograms to Pounds</option>
+          </select>
+
+          <input
+            id="input"
+            class="my-3 form-control form-control-lg"
+            type="number"
+            placeholder=""
+          />
+
           <div id="output">
-            <div class="card text-white bg-primary mb-2">
-              <div class="card-header">
-                <h4>Grams:</h4>
-                <div id="gramsOutput"></div>
-              </div>
+            <div class="alert alert-primary" role="alert">
+              <h4>Grams:</h4>
+              <div id="gramsOutput"></div>
             </div>
-
-            <div class="card text-white bg-success mb-2">
-              <div class="card-header">
-                <h4>Kilograms:</h4>
-                <div id="kgOutput"></div>
-              </div>
+            <div class="alert alert-success" role="alert">
+              <h4>Ounces:</h4>
+              <div id="ozOutput"></div>
             </div>
-
-            <div class="card text-white bg-info mb-2">
-              <div class="card-header">
-                <h4>Ounces:</h4>
-                <div id="ozOutput"></div>
-              </div>
+            <div class="alert alert-warning" role="alert">
+              <h4>Pounds:</h4>
+              <div id="lbsOutput"></div>
+            </div>
+            <div class="alert alert-secondary" role="alert">
+              <h4>Kilograms:</h4>
+              <div id="kgsOutput"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <script>
-      document.getElementById("output").style.visibility = "hidden";
-
-      let selectElem = document.getElementById("selectedValue");
-      selectElem.addEventListener("change", function () {
-        console.log(selectElem.selectedIndex);
-      });
-      document
-        .getElementById("lbsInput")
-        .addEventListener("input", function (e) {
-          document.getElementById("output").style.visibility = "visible";
-          let lbs = e.target.value;
-          document.getElementById("gramsOutput").innerHTML = lbs / 0.0022046;
-          document.getElementById("kgOutput").innerHTML = lbs / 2.2046;
-          document.getElementById("ozOutput").innerHTML = lbs * 16;
-        });
-    </script>
+    <script src="main.js"></script>
   </body>
 </html>
