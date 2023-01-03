@@ -2,7 +2,7 @@ const outputDiv = document.querySelector("#output");
 outputDiv.style.visibility = "hidden";
 
 let input = document.querySelector("#input");
-input.disabled = true;
+// input.disabled = true;
 
 let grams = document.querySelector("#gramsOutput");
 let oz = document.querySelector("#ozOutput");
@@ -11,6 +11,7 @@ let kgs = document.querySelector("#kgsOutput");
 
 document.querySelector("#select").addEventListener("input", function (e) {
   // if pound to kilograms
+
   if (e.target.value === "lbKg") {
     input.disabled = false;
     input.setAttribute("placeholder", "Enter pounds");
